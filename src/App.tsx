@@ -1,18 +1,12 @@
-import React from "react";
-import Footer from "./components/Footer.js";
-import Header from "./components/Header.js";
-import HomePage from "./components/HomePage.js"
+import AppRoutes from "./Routing/Routes.js";
+import { BrowserRouter } from "react-router-dom"
 
 
 function App() {
-
-
   return (
-    <div>
-      <Header />
-      <HomePage />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
 
