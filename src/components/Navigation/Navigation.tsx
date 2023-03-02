@@ -7,15 +7,13 @@ import UserNav from './UserNav'
 
 function Navigation() {
  return (
-  <nav>
+  <nav className='bg-[#7A6E6e] h-0 mb-[15px] flex justify-between text-[rgb(14,14,15)]'>
    <div>
     <a href="/dashboard">Dashboard</a>
    </div>
    {/* {isLogged ? <UserNav /> : <GuestNav />} */}
    <UserNav />
    <GuestNav />
-
-
   </nav>
  )
 }

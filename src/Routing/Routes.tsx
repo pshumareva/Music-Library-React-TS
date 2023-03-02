@@ -4,6 +4,7 @@ import AppWrap from './AppWrap'
 import HomePage from '../components/HomePage'
 import Dashboard from '../components/Dashboard/Dashboard'
 import AddAlbum from '../components/Create/AddAlbum'
+import Login from '../components/Login/Login'
 
 function AppRoutes() {
  return (
@@ -12,6 +13,7 @@ function AppRoutes() {
     <Route index element={<HomePage />} />
     <Route path="/dashboard" element={<Dashboard />} />
     <Route path='/addalbum' element={<AddAlbum />}></Route>
+    <Route path='/login' element={<Login />}></Route>
    </Route>
   </Routes>
  )
