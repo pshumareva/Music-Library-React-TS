@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import GuestNav from './GuestNav'
 import UserNav from './UserNav'
 
@@ -9,7 +9,7 @@ function Navigation() {
  return (
   <nav>
    <div>
-    <a href="/dashboard">Dashboard</a>
+    <Link to="/dashboard">Dashboard</Link>
    </div>
    {/* {isLogged ? <UserNav /> : <GuestNav />} */}
    <UserNav />
