@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import AppWrap from './AppWrap'
 import HomePage from '../components/HomePage'
 import Dashboard from '../components/Dashboard/Dashboard'
+import AddAlbum from '../components/Create/AddAlbum'
 
 function AppRoutes() {
  return (
@@ -10,6 +11,7 @@ function AppRoutes() {
    <Route path="/" element={<AppWrap />}>
     <Route index element={<HomePage />} />
     <Route path="/dashboard" element={<Dashboard />} />
+    <Route path='/addalbum' element={<AddAlbum />}></Route>
    </Route>
   </Routes>
  )
