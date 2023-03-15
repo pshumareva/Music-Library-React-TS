@@ -21,7 +21,7 @@ function Dashboard({ data }: Albums) {
    ) : (
     <div>
      <h1>Trial</h1>
-     {assets.map((asset) => {
+     {data.map((asset) => {
       // Notice the TS errors ? Hint: Assets have to be typed ;)
       return <>
        <li className="card">
