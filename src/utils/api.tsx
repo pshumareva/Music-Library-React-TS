@@ -22,7 +22,7 @@ async function request(url: string, options: any) {
  }
 }
 
-function getOptions(method = "get", body: any) {
+function getOptions(method = "get", body?: any) {
  const options = {
   method,
   headers: {},

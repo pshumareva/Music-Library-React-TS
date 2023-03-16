@@ -2,6 +2,7 @@ import React from "react";
 import getData from "../../utils/data";
 import { useState, useEffect } from "react";
 import { Album, Albums } from "../../interfaces/Props";
+import PopulatedDashboard from "./PopulatedDashboard";
 
 function Dashboard({ data }: Albums) {
   const [assets, setAssets] = useState<Album[]>([]);
@@ -20,8 +21,7 @@ function Dashboard({ data }: Albums) {
         <h1>Loading</h1>
       ) : (
         <div>
-          <h1>Trial</h1>
-          {assets.map((asset) => {
+          {/* {assets.map((asset) => {
             // Notice the TS errors ? Hint: Assets have to be typed ;)
             return (
               <>
@@ -45,7 +45,8 @@ function Dashboard({ data }: Albums) {
                 </li>
               </>
             );
-          })}
+          })} */}
+          <PopulatedDashboard props={assets} />
         </div>
       )}
     </div>
