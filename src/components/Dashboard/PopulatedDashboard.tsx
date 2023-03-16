@@ -1,34 +1,16 @@
 import React from 'react'
+import { Album } from '../../interfaces/Props';
+import DashboardCard from './DashboardCard';
 
-function PopulatedDashboard(props: any) {
+function PopulatedDashboard({ assets }: { assets: Album[] }) {
  return (
-  <div>
-   {props.assets.map((asset: any) => {
-    // Notice the TS errors ? Hint: Assets have to be typed ;)
+  <ul className='flex h-screen list-none flex-wrap mt-[50px]'>
+   {assets.map((asset: any) => {
     return (
-     <>
-      <li className="card">
-       <img src={asset.imageUrl} alt="travis" />
-       <p>
-        <strong>Singer/Band: </strong>
-        <span className="singer">{asset.singer}</span>
-       </p>
-       <p>
-        <strong>Album name: </strong>
-        <span className="album">{asset.album}</span>
-       </p>
-       <p>
-        <strong>Sales:</strong>
-        <span className="sales">{asset.sales}</span>
-       </p>
-       <a className="details-btn" id={asset._id}>
-        Details
-       </a>
-      </li>
-     </>
+     <DashboardCard asset={asset} key={asset._id} />
     );
    })}
-  </div>
+  </ul>
  )
 }
 
