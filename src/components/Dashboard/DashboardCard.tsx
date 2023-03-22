@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Album } from '../../interfaces/Props'
 
 function DashboardCard({ asset }: { asset: Album }) {
@@ -16,9 +17,9 @@ function DashboardCard({ asset }: { asset: Album }) {
     <strong className='float-left'>Sales:</strong>
     <span className="float-right w-[50%] text-right text-[21px">{asset.sales}</span>
    </p>
-   <a className="block w-[150px] h-[40px] border-none bg-[#CBF6FF] text-black text-[18px] outline-none cursor-pointer text-center pt-[5px] font-bold" id={asset._id}>
+   <Link to={`/details/` + asset._id} className='block w-[150px] h-[40px] border-none bg-[#CBF6FF] text-black text-[18px] outline-none cursor-pointer text-center pt-[5px] font-bold' id={asset._id}>
     Details
-   </a>
+   </Link>
   </li>
  )
 }

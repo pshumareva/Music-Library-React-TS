@@ -8,3 +8,11 @@ export interface Album {
 export interface Albums {
  data: Album[];
 }
+
+export interface AlbumDetails extends Album {
+ release: number,
+ label: string,
+}
+export interface AlbumInfo {
+ data: AlbumDetails[];
+}

@@ -14,7 +14,6 @@ function Dashboard({ data }: Albums) {
       setIsLoading(false);
     });
   }, []);
-
   return (
     <div>
       {isLoading ? (
