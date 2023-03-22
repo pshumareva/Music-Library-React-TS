@@ -6,15 +6,16 @@ import { getAlbumById } from "../../utils/data";
 function Details({ data }: AlbumInfo) {
   const [asset, setAsset] = useState<AlbumDetails[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  // Getting album Id from the params (we're allowed to do this because of how react-router-dom works.)
   const { id } = useParams();
-
+  console.log(id);
   useEffect(() => {
-    const result = getAlbumById("136777f5-3277-42ad-b874-76d043b069cb").then(
-      (data) => {
+    const result =
+      id &&
+      getAlbumById(id).then((data) => {
         setAsset(data);
         setIsLoading(false);
-      }
-    );
+      });
   }, []);
 
   console.log(asset, "asset");
