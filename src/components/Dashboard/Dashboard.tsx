@@ -1,8 +1,8 @@
-import getData from "../../utils/data";
 import { useState, useEffect } from "react";
 import { Album, Albums } from "../../interfaces/Props";
 import PopulatedDashboard from "./PopulatedDashboard";
 import EmptyDashboard from "./EmptyDashboard";
+import { getData } from "../../utils/data";
 
 function Dashboard({ data }: Albums) {
   const [assets, setAssets] = useState<Album[]>([]);
@@ -18,10 +18,10 @@ function Dashboard({ data }: Albums) {
     <div>
       {isLoading ? (
         <h1>Loading</h1>
+      ) : assets.length > 0 ? (
+        <PopulatedDashboard assets={assets} />
       ) : (
-        assets.length > 0 ?
-          <PopulatedDashboard assets={assets} /> :
-          <EmptyDashboard />
+        <EmptyDashboard />
       )}
     </div>
   );
