@@ -1,4 +1,15 @@
-import React from 'react'
+import { createAlbum } from "../../utils/data"
+import { useState } from "react"
+
+const [values, setValues] = useState({ singer: '', album: '', imageUrl: '', release: '', label: '', sales: '' })
+
+const handleClick = (e) => {
+ e.preventDefault();
+ const newAlbum = setValues({ ...values, [e.target.name]: e.target.value })
+ createAlbum(newAlbum)
+
+ setValues({ singer: '', album: '', imageUrl: '', release: '', label: '', sales: '' })
+}
 
 function AddAlbum() {
  return (
@@ -34,7 +45,7 @@ function AddAlbum() {
      <input type="text" name="sales" id="album-sales" placeholder="Sales"
       className='bg-[#fafafa] w-[90%] h-[50px] border-0 mx-[15px] p-[15px] box-border text-sm text-center' />
 
-     <button type="submit" className='uppercase fw-bold bg-[#CBF6FF] w-[50%] border-0 p-[15px] text-black text-sm'>post</button>
+     <button type="submit" className='uppercase fw-bold bg-[#CBF6FF] w-[50%] border-0 p-[15px] text-black text-sm' onClick={handleClick}>post</button>
     </form>
    </div>
   </section >
