@@ -13,15 +13,12 @@ function Navigation() {
   }
  }, [])
 
-
- console.log('islogged', isLogged)
-
  return (
   <nav className='bg-[#7A6E6e] h-0 mb-[15px] flex justify-between text-[rgb(14,14,15)]'>
    <div>
     <a href="/dashboard" className='text-[1.5rem] color-[#0a0a0a] font-bold mr-2'>Dashboard</a>
    </div>
-   {isLogged ? <UserNav /> : <GuestNav />}
+   {isLogged ? <UserNav setIsLogged={setIsLogged} isLogged={isLogged} /> : <GuestNav />}
   </nav>
  )
 }
