@@ -23,7 +23,6 @@ function AddAlbum() {
   e.preventDefault();
   // setValues({ ...values, ...formData });
   // when we use useState, we don't need to set the values to another variable, the first one from out useState is the value, so values can already be used
-  console.log(values);
   createAlbum(values);
 
   setValues({
