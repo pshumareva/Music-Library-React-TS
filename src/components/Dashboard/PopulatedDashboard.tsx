@@ -4,7 +4,7 @@ import DashboardCard from './DashboardCard';
 
 function PopulatedDashboard({ assets }: { assets: Album[] }) {
  return (
-  <ul className='flex h-screen list-none flex-wrap mt-[50px]'>
+  <ul className='flex h-fit list-none flex-wrap mt-[50px]'>
    {assets.map((asset: any) => {
     return (
      <DashboardCard asset={asset} key={asset._id} />

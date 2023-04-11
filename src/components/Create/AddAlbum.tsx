@@ -1,5 +1,6 @@
 import { createAlbum } from "../../utils/data";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 
 // Invalid hook call is caused by calling useState outside the component.
 
@@ -13,6 +14,8 @@ function AddAlbum() {
   label: "",
   sales: "",
  });
+ let [valid, setValid] = useState(false)
+ const navigate = useNavigate()
 
  // Adding a handleChange function, so we can set the state each time the value changes.
  const handleChange = (e) => {
@@ -21,9 +24,46 @@ function AddAlbum() {
 
  const handleSubmit = (e) => {
   e.preventDefault();
+
   // setValues({ ...values, ...formData });
   // when we use useState, we don't need to set the values to another variable, the first one from out useState is the value, so values can already be used
-  createAlbum(values);
+  // if (values.singer === "" ||
+  //  values.album === "" ||
+  //  values.imageUrl === "" ||
+  //  values.release === "" ||
+  //  values.label === "" ||
+  //  values.sales === "") {
+  //  createAlbum(values);
+  // }
+
+  // for (const property in values) {
+  //  if (values[property] !== "" && values[property] !== null) {
+  //   console.log(values[property])
+  //   setValid(true)
+  //   console.log('inside', valid)
+  //  } else {
+  //   setValid(false)
+  //  }
+  // }
+  // console.log('outside', valid)
+
+
+  const checkInput = Object.values(values).every(value => {
+   console.log("value", value)
+   if (value !== "") {
+    setValid(true)
+   } else {
+    setValid(false)
+   }
+  })
+
+  console.log("check", checkInput, "valid", valid)
+
+  if (valid) {
+   createAlbum(values)
+  } else {
+   alert("problem")
+  }
 
   setValues({
    singer: "",
@@ -33,7 +73,9 @@ function AddAlbum() {
    label: "",
    sales: "",
   });
+  navigate("/dashboard")
  };
+
  return (
   <section id="create">
    <div className="bg-white max-w-[460px] m-auto mt-[100px] p-11 text-center font-black shadow-[15px_15px_rgba(0,0,0,0.15)]">
