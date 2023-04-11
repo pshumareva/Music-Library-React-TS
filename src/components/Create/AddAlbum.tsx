@@ -2,6 +2,8 @@ import { createAlbum } from "../../utils/data";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddAlbumState } from "../../interfaces/Props";
+import { validateValues } from "../../utils/utilities.js"
+
 
 // Invalid hook call is caused by calling useState outside the component.
 
@@ -25,27 +27,19 @@ function AddAlbum() {
 
  const handleSubmit = (e) => {
   e.preventDefault();
-
   // setValues({ ...values, ...formData });
   // when we use useState, we don't need to set the values to another variable, the first one from out useState is the value, so values can already be used
 
   ///// Example
-
   // Function that accepts an object of type AddAlbumState (all fields from album state)
-
-  const validateValues = (values: AddAlbumState) => {
-   for (let value in values) {
-    // We take in each value, so everything that's been input for the singer/album/image etc.
-    const inputValue = values[value as keyof AddAlbumState];
-    if (inputValue === "") {
-     // if any of those values is an empty string, we console log the key for which this value is.
-     // we could throw an error/ console.error the error or simply do a setState to set an error
-     setError(true)
-     throw `Please fill out all input fields. ${value} field is empty`
-    }
-   }
-  };
-  validateValues(values)
+  try {
+   validateValues(values)
+   console.log("val", validateValues(values))
+  } catch (err) {
+   if (err)
+    setError(true)
+  }
+  console.log("is there an error?", error)
   if (!error) {
    createAlbum(values)
    navigate("/dashboard")
