@@ -1,18 +1,27 @@
 export interface Album {
- imageUrl: string,
- singer: string,
- album: string,
- sales: number,
- _id: string
+  imageUrl: string;
+  singer: string;
+  album: string;
+  sales: number;
+  _id: string;
 }
 export interface Albums {
- data: Album[];
+  data: Album[];
 }
 
 export interface AlbumDetails extends Album {
- release: number,
- label: string,
+  release: number;
+  label: string;
 }
 export interface AlbumInfo {
- data: AlbumDetails[];
+  data: AlbumDetails[];
+}
+
+export interface AddAlbumState {
+  imageUrl: string;
+  singer: string;
+  album: string;
+  sales: string;
+  release: string;
+  label: string;
 }
