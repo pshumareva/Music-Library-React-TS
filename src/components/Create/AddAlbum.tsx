@@ -32,20 +32,16 @@ function AddAlbum() {
     ///// Example
     // Function that accepts an object of type AddAlbumState (all fields from album state)
     try {
-      console.log("try block");
       validateValues(values);
 
       // Doing the actions that we would if validation passes. If it doesn't we'll get an error anyway and function at like 36 won't fire at all.
       createAlbum(values);
       navigate("/dashboard");
-      console.log("val", validateValues(values));
     } catch (err) {
-      console.log("catch block");
+      alert("Please fill out all input fields.")
       setError(true);
     }
   };
-
-  console.log("Error: ", error); // Error state is indeed true if there is an error in validation.
 
   return (
     <section id="create">

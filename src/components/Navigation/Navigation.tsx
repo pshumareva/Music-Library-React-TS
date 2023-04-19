@@ -13,9 +13,6 @@ function Navigation() {
   }
  }, [])
 
-
- console.log('islogged', isLogged)
-
  return (
   <nav className='bg-[#7A6E6e] h-0 mb-[15px] flex justify-between text-[rgb(14,14,15)]'>
    <div>
