@@ -17,7 +17,7 @@ export interface AlbumInfo {
   data: AlbumDetails[];
 }
 
-export interface AddAlbumState {
+export interface AddEditAlbumState {
   imageUrl: string;
   singer: string;
   album: string;

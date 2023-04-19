@@ -9,6 +9,10 @@ function Details({ data }: AlbumInfo) {
   const [isOwner, setIsOwner] = useState(false);
   // Getting album Id from the params (we're allowed to do this because of how react-router-dom works.)
   const { id } = useParams();
+
+  // const ownerId = asset._ownerId
+  // const userId = sessionStorage.userId
+
   useEffect(() => {
     const result =
       id &&
@@ -16,12 +20,16 @@ function Details({ data }: AlbumInfo) {
         setAsset(data);
         setIsLoading(false);
       });
-    const owner = asset._ownerId === sessionStorage.userId;
-    if (owner) {
+    const ownerId = asset._ownerId
+    const userId = sessionStorage.userId
+    if (ownerId === userId) {
       setIsOwner(true)
+      console.log(isOwner)
     }
   }, []);
-  console.log("LOG", asset)
+
+  console.log('isowner', isOwner)
+  console.log('comparison', asset._ownerId === sessionStorage.userId)
   return (
     <section id="details" className="h-screen">
       {!isLoading && (

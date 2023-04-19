@@ -1,14 +1,14 @@
 import { createAlbum } from "../../utils/data";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AddAlbumState } from "../../interfaces/Props";
+import { AddEditAlbumState } from "../../interfaces/Props";
 import { validateValues } from "../../utils/utilities.js";
 
 // Invalid hook call is caused by calling useState outside the component.
 
 function AddAlbum() {
   // always call hooks INSIDE the component function
-  const [values, setValues] = useState<AddAlbumState>({
+  const [values, setValues] = useState<AddEditAlbumState>({
     singer: "",
     album: "",
     imageUrl: "",
@@ -30,7 +30,7 @@ function AddAlbum() {
     // when we use useState, we don't need to set the values to another variable, the first one from out useState is the value, so values can already be used
 
     ///// Example
-    // Function that accepts an object of type AddAlbumState (all fields from album state)
+    // Function that accepts an object of type AddEditAlbumState (all fields from album state)
     try {
       validateValues(values);
 
