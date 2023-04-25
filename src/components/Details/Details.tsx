@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AlbumDetails, AlbumInfo } from "../../interfaces/Props";
-import { Link, useParams } from "react-router-dom";
-import { getAlbumById } from "../../utils/data";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { getAlbumById, deleteAlbum } from "../../utils/data";
 
 function Details({ data }: AlbumInfo) {
   const [asset, setAsset] = useState<AlbumDetails[]>([]);
@@ -9,6 +9,7 @@ function Details({ data }: AlbumInfo) {
   const [isOwner, setIsOwner] = useState(false);
   // Getting album Id from the params (we're allowed to do this because of how react-router-dom works.)
   const { id } = useParams();
+  const navigate = useNavigate();
 
   // const ownerId = asset._ownerId
   // const userId = sessionStorage.userId
@@ -27,6 +28,11 @@ function Details({ data }: AlbumInfo) {
     }
     // Setting isLoading as dependecy would ensure that once we are done loading (the asset has already been pulled and the owner Id is not undefined), we check for owner again (rerender)
   }, [isLoading]);
+
+  function onDelete() {
+    deleteAlbum(id)
+    navigate('/dashboard')
+  }
 
   return (
     <section id="details" className="h-screen">
@@ -100,13 +106,13 @@ function Details({ data }: AlbumInfo) {
                 >
                   Edit
                 </Link>
-                <Link
-                  to={'/dashboard'}
+                <button
                   className="no-underline mx-auto my-[50px] w-[130px] text-[21px] p-[10px] text-center text-black font-medium bg-[#CBF6FF] hover:shadow-[0_15px_15px_#7db9d7]"
                   id="delete-btn"
+                  onClick={onDelete}
                 >
                   Delete
-                </Link>
+                </button>
               </div>
             )}
             {/* <div id="likes" className="w-[95%] text-center mt-[35px] mb-[20px] font-bold text-[21px]">
