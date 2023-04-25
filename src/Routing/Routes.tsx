@@ -5,6 +5,7 @@ import Dashboard from "../components/Dashboard/Dashboard";
 import AddAlbum from "../components/Create/AddAlbum";
 import Login from "../components/Login/Login";
 import Details from "../components/Details/Details";
+import Edit from "../components/Edit/Edit";
 
 function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ function AppRoutes() {
         <Route path="/addalbum" element={<AddAlbum />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/details/:id" element={<Details />}></Route>
+        <Route path="/edit/:id" element={<Edit />}></Route>
       </Route>
     </Routes>
   );

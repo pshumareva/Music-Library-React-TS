@@ -1,7 +1,7 @@
-import { updateAlbum, getAlbumById } from "../../utils/data"
+import { updateAlbum } from "../../utils/data"
 import { AddEditAlbumState } from "../../interfaces/Props"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { validateValues } from "../../utils/utilities";
 
 function Edit() {
@@ -15,6 +15,7 @@ function Edit() {
  });
  const [error, setError] = useState(false);
  const navigate = useNavigate();
+ const { id } = useParams()
 
  const handleChange = (e) => {
   setValues({ ...values, [e.target.name]: e.target.value });
@@ -24,7 +25,7 @@ function Edit() {
   e.preventDefault();
   try {
    validateValues(values);
-   updateAlbum(getAlbumById, values);
+   updateAlbum(id, values);
    navigate("/dashboard");
   } catch (err) {
    alert("Please fill out all input fields.")
@@ -34,53 +35,63 @@ function Edit() {
 
  return (
   <section id="edit">
-   <div class="form">
-    <h2>Edit Album</h2>
-    <form class="edit-form">
+   <div className="bg-white max-w-[460px] m-auto mt-[100px] p-11 text-center font-black shadow-[15px_15px_rgba(0,0,0,0.15)]">
+    <h2 className="mt-0 mb-[30px] text-[30px] italic">Edit Album</h2>
+    <form className="edit-form" onSubmit={handleSubmit}>
      <input
       type="text"
       name="singer"
       id="album-singer"
       placeholder="Singer/Band"
-      value=${albumById.singer}
+      className="bg-[#fafafa] w-[90%] h-[50px] border-0 mx-[15px] p-[15px] box-border text-sm text-center"
+      onChange={handleChange}
      />
      <input
       type="text"
       name="album"
       id="album-album"
       placeholder="Album"
-      value=${albumById.album}
+      className="bg-[#fafafa] w-[90%] h-[50px] border-0 mx-[15px] p-[15px] box-border text-sm text-center"
+      onChange={handleChange}
      />
      <input
       type="text"
       name="imageUrl"
       id="album-img"
       placeholder="Image url"
-      value=${albumById.imageUrl}
+      className="bg-[#fafafa] w-[90%] h-[50px] border-0 mx-[15px] p-[15px] box-border text-sm text-center"
+      onChange={handleChange}
      />
      <input
       type="text"
       name="release"
       id="album-release"
       placeholder="Release date"
-      value=${albumById.release}
+      className="bg-[#fafafa] w-[90%] h-[50px] border-0 mx-[15px] p-[15px] box-border text-sm text-center"
+      onChange={handleChange}
      />
      <input
       type="text"
       name="label"
       id="album-label"
       placeholder="Label"
-      value=${albumById.label}
+      className="bg-[#fafafa] w-[90%] h-[50px] border-0 mx-[15px] p-[15px] box-border text-sm text-center"
+      onChange={handleChange}
      />
      <input
       type="text"
       name="sales"
       id="album-sales"
       placeholder="Sales"
-      value=${albumById.sales}
+      className="bg-[#fafafa] w-[90%] h-[50px] border-0 mx-[15px] p-[15px] box-border text-sm text-center"
+      onChange={handleChange}
      />
-
-     <button type="submit">post</button>
+     <button
+      type="submit"
+      className="uppercase fw-bold bg-[#CBF6FF] w-[50%] border-0 p-[15px] text-black text-sm"
+     >
+      edit
+     </button>
     </form>
    </div>
   </section>

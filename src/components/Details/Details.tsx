@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AlbumDetails, AlbumInfo } from "../../interfaces/Props";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getAlbumById } from "../../utils/data";
 
 function Details({ data }: AlbumInfo) {
@@ -24,12 +24,9 @@ function Details({ data }: AlbumInfo) {
     const userId = sessionStorage.userId;
     if (ownerId === userId) {
       setIsOwner(true);
-      console.log(isOwner);
     }
     // Setting isLoading as dependecy would ensure that once we are done loading (the asset has already been pulled and the owner Id is not undefined), we check for owner again (rerender)
   }, [isLoading]);
-
-  console.log("isowner", isOwner);
 
   return (
     <section id="details" className="h-screen">
@@ -96,20 +93,20 @@ function Details({ data }: AlbumInfo) {
                 id="action-buttons"
                 className="flex flex-wrap justify-center mt-[35px]"
               >
-                <a
-                  href=""
+                <Link
+                  to={'/edit/' + asset._id}
                   id="edit-btn"
                   className="no-underline mx-auto my-[50px] w-[130px] text-[21px] p-[10px] text-center text-black font-medium bg-[#CBF6FF] hover:shadow-[0_15px_15px_#7db9d7]"
                 >
                   Edit
-                </a>
-                <a
-                  href=""
+                </Link>
+                <Link
+                  to={'/dashboard'}
                   className="no-underline mx-auto my-[50px] w-[130px] text-[21px] p-[10px] text-center text-black font-medium bg-[#CBF6FF] hover:shadow-[0_15px_15px_#7db9d7]"
                   id="delete-btn"
                 >
                   Delete
-                </a>
+                </Link>
               </div>
             )}
             {/* <div id="likes" className="w-[95%] text-center mt-[35px] mb-[20px] font-bold text-[21px]">
