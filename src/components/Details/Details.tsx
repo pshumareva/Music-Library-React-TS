@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { AlbumDetails, AlbumInfo } from "../../interfaces/Props";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAlbumById, deleteAlbum } from "../../utils/data";
+import { Album } from "../SampleDashboard/SampleDashAlbums";
 
 function Details({ data }: AlbumInfo) {
-  const [asset, setAsset] = useState<AlbumDetails[]>([]);
+  const [asset, setAsset] = useState<AlbumDetails | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isOwner, setIsOwner] = useState(false);
   // Getting album Id from the params (we're allowed to do this because of how react-router-dom works.)
@@ -18,7 +19,8 @@ function Details({ data }: AlbumInfo) {
         setAsset(data);
         setIsLoading(false);
       });
-    const ownerId = asset._ownerId;
+    console.log(asset);
+    const ownerId = asset?._ownerId;
     const userId = sessionStorage.userId;
     if (ownerId === userId) {
       setIsOwner(true);
@@ -27,8 +29,8 @@ function Details({ data }: AlbumInfo) {
   }, [isLoading]);
 
   function onDelete() {
-    deleteAlbum(id)
-    navigate('/dashboard')
+    id && deleteAlbum(id);
+    navigate("/dashboard");
   }
 
   return (
@@ -49,7 +51,7 @@ function Details({ data }: AlbumInfo) {
               <div className="flex p-[15px]">
                 <div id="img-wrapper" className="max-w-[35%]">
                   <img
-                    src={asset.imageUrl}
+                    src={asset?.imageUrl}
                     className="w-full min-h-[250px] block"
                     alt="example1"
                   />
@@ -61,31 +63,31 @@ function Details({ data }: AlbumInfo) {
                   <p className="w-[90%] mt-[25px] h-auto text-center font-bold">
                     <strong>Band:</strong>
                     <span id="details-singer" className="float-right">
-                      {asset.singer}
+                      {asset?.singer}
                     </span>
                   </p>
                   <p className="w-[90%] mt-[25px] h-auto text-center font-bold">
                     <strong>Album name:</strong>
                     <span id="details-album" className="float-right">
-                      {asset.album}
+                      {asset?.album}
                     </span>
                   </p>
                   <p className="w-[90%] mt-[25px] h-auto text-center font-bold">
                     <strong>Release date:</strong>
                     <span id="details-release" className="float-right">
-                      {asset.release}
+                      {asset?.release}
                     </span>
                   </p>
                   <p className="w-[90%] mt-[25px] h-auto text-center font-bold">
                     <strong>Label:</strong>
                     <span id="details-label" className="float-right">
-                      {asset.label}
+                      {asset?.label}
                     </span>
                   </p>
                   <p className="w-[90%] mt-[25px] h-auto text-center font-bold">
                     <strong>Sales:</strong>
                     <span id="details-sales" className="float-right">
-                      {asset.sales}
+                      {asset?.sales}
                     </span>
                   </p>
                 </div>
@@ -97,7 +99,7 @@ function Details({ data }: AlbumInfo) {
                 className="flex flex-wrap justify-center mt-[35px]"
               >
                 <Link
-                  to={'/edit/' + asset._id}
+                  to={"/edit/" + asset?._id}
                   id="edit-btn"
                   className="no-underline mx-auto my-[50px] w-[130px] text-[21px] p-[10px] text-center text-black font-medium bg-[#CBF6FF] hover:shadow-[0_15px_15px_#7db9d7]"
                 >
