@@ -3,23 +3,14 @@ import { AddEditAlbumState } from "../../interfaces/Props"
 import { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import { validateValues } from "../../utils/utilities";
+import resettingValues from "../../utils/resettingValues";
 
 function Edit() {
- const [values, setValues] = useState<AddEditAlbumState>({
-  singer: "",
-  album: "",
-  imageUrl: "",
-  release: "",
-  label: "",
-  sales: "",
- });
+ const resetValues = resettingValues();
+
  const [error, setError] = useState(false);
  const navigate = useNavigate();
  const { id } = useParams()
-
- const handleChange = (e) => {
-  setValues({ ...values, [e.target.name]: e.target.value });
- };
 
  const handleSubmit = (e) => {
   e.preventDefault();

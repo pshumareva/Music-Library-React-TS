@@ -11,9 +11,6 @@ function Details({ data }: AlbumInfo) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // const ownerId = asset._ownerId
-  // const userId = sessionStorage.userId
-
   useEffect(() => {
     const result =
       id &&
