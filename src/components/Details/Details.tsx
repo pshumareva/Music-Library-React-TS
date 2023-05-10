@@ -13,8 +13,7 @@ function Details({ data }: AlbumInfo) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const result =
-      id &&
+    id &&
       getAlbumById(id).then((data) => {
         setAsset(data);
         setIsLoading(false);
