@@ -14,3 +14,16 @@ export function validateValues(values: AddEditAlbumState) {
   }
  }
 }
+
+export function initialAlbumState() {
+ const initialState =
+ {
+  singer: "",
+  album: "",
+  imageUrl: "",
+  release: "",
+  label: "",
+  sales: "",
+ }
+ return initialState
+}

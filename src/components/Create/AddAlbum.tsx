@@ -3,19 +3,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddEditAlbumState } from "../../interfaces/Props";
 import { validateValues } from "../../utils/utilities.js";
+import { initialAlbumState } from "../../utils/utilities.js";
 
 // Invalid hook call is caused by calling useState outside the component.
 
 function AddAlbum() {
   // always call hooks INSIDE the component function
-  const [values, setValues] = useState<AddEditAlbumState>({
-    singer: "",
-    album: "",
-    imageUrl: "",
-    release: "",
-    label: "",
-    sales: "",
-  });
+  const [values, setValues] = useState<AddEditAlbumState>(initialAlbumState);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
