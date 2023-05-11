@@ -4,6 +4,7 @@ export interface Album {
   album: string;
   sales: number;
   _id: string;
+  _ownerId: string;
 }
 export interface Albums {
   data: Album[];
