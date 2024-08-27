@@ -1,10 +1,15 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 
-function UserNav() {
+function UserNav(props: any) {
+ const handleClick = () => {
+  props.setIsLogged(false)
+  sessionStorage.clear()
+ }
+
  return (
   <div className="user">
-   <a href="/create">Add Album</a>
-   <a href="/dashboard" className="logoutBtn">Logout</a>
+   <Link to="/addalbum" className='text-[1.5rem] color-[#0a0a0a] font-bold mr-2'>Add Album</Link>
+   <button className='text-[1.5rem] text-[#646cff] italic font-bold mr-2' onClick={handleClick}>Logout</button>
   </div>
  )
 }
